@@ -1,0 +1,16 @@
+{
+  "name": "js2019",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "mdx-deck index.mdx",
+    "now-build": "mdx-deck build index.mdx --no-html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mdx-deck": "^2.3.2"
+  }
+}

@@ -1,0 +1,236 @@
+import future from '@mdx-deck/themes/future'
+import highlight from '@mdx-deck/themes/syntax-highlighter'
+
+export const themes = [
+  future,
+  highlight
+]
+
+# JavaScript i 2019😂😂😂🤯🤓
+
+Andreas Drivenes
+
+---
+
+## Noen webstandarder💻
+
+- W3C - CSS, DOM, SVG, WCAG, WAI-ARIA etc.
+- TC39 - ECMAScript
+- WhatWG - HTML, fetch, web workers, DOM etc.
+- WICG
+  - Undergruppe av WC3
+- IETF - HTTP/HTTP2 etc
+
+Litt politisk drama mellom WC3 og WhatWG (MS, GOOG, MOZ, APPL)
+
+---
+
+## JavaScript og ECMAScript
+
+ECMAScript er en formalisert spesifikasjon av et scriptingspråk.
+
+JavaScript er en implementering av ECMAScript.
+
+- SpiderMonkey (FF), V8 (Chrome), JavaScriptCore (WebKit, Safari)
+
+---
+
+## Tidslinje🕰
+
+- ECMAScript 5 (desember 2009)
+- ECMAScript 5.1 (juni 2011)
+- ECMAScript 2015 (juni 2015)
+  - Tidligere populært kalt ES6
+- ECMAScript 2016 (juni 2016)
+  - Tidligere kalt ES7
+- ECMAScript 2017 (juni 2017)
+- ECMAScript 2018 (juni 2018)
+- ECMAScript 2019 (forventet i 2019)
+
+---
+
+## ECMAScript 2015
+
+Største oppdatering på mange år.
+
+Inneholdt blant annet klasser, modulsystem, promises, arrow functions, `const`/`let` osv.
+
+---
+
+## ECMAScript 2016
+
+- Array.prototype.includes
+- Operator for eksponentiering (`7**2`, sju opphøyd i to)
+
+---
+
+## ECMAScript 2017
+
+- async/await
+- `Object.values`/`Object.entries`
+```js
+Object.entries({a: 1, b: 2}) // [["a", 1], ["b", 2]]
+```
+- ++
+
+---
+
+## ECMAScript 2018
+
+- rest/spread properties (`{...andreas}`)
+- `Promise.prototype.finally` (kjører alltid etter resolve eller reject)
+- RegExp named capture groups 
+```jsx
+    /(?<year>\d{4})/
+```
+- asynkron iterasjon (`for await (const promise of listOfPromises)`)
+- ++
+
+---
+
+## ECMAScript 2019
+
+Kommer ut i år
+
+- `Object.fromEntries`
+```js
+Object.fromEntries([['a', 0], ['b', 1]]); // { a: 0, b: 1 }
+```
+- `Array.prototype.{flat,flatMap}`
+- ++
+
+---
+
+## ESNext
+Nye ting godkjent etter januar 2019
+
+- `String.prototype.matchAll`
+
+---
+
+## Hvor kan jeg lese mer om dette?
+
+https://github.com/tc39/proposals/blob/master/finished-proposals.md
+
+
+---
+## TC39
+
+> "The Ecma TC39 committee is responsible for evolving<br/> the ECMAScript programming language and authoring the specification"
+
+---
+
+## Prosessen til TC39
+
+- Stage 0 ("strawperson")
+- Stage 1 ("proposal")
+- Stage 2 ("draft") - syntaks og semantikk
+- Stage 3 ("candidate") - tilbakemelding fra brukere og industrien
+- Stage 4 ("finished") - klar for å bli en del av spekken
+
+--- 
+
+## Følge med på prosessen?
+
+- https://github.com/tc39/proposals
+- https://tc39.github.io/process-document/
+- https://tc39.github.io/
+- https://github.com/tc39/agendas
+- https://github.com/rwaldron/tc39-notes
+
+---
+
+## Hva er i stage 3 nå?
+
+- `import()`
+- static class fields and private static methods
+- private instance methods and accessors
+- class public instance fields og private instance fields
+
+```js
+class XYZ {
+  #xValue = 0;
+
+  get #x() { return #xValue; }
+  set #x(value) {
+    this.#xValue = value;
+  }
+
+  static yValue = 1;
+
+  static #computeZValue() {
+    return 2;
+  }
+```
+
+---
+
+## Noen spennende ting i stage 1
+
+- Pipeline-operator
+
+```js
+let result = exclaim(capitalize(doubleSay("hello")));
+//result //=> "Hello, hello!"
+
+let result = "hello"
+  |> doubleSay
+  |> capitalize
+  |> exclaim;
+
+//result //=> "Hello, hello!"
+```
+
+---
+
+## Noen spennende ting i stage 1
+
+- do expressions
+
+```jsx
+return (
+  <nav>
+    <Home />
+    {
+      do {
+        if (loggedIn) {
+          <LogoutButton />
+        } else {
+          <LoginButton />
+        }
+      }
+    }
+  </nav>
+)
+```
+
+---
+
+## Noen spennende ting i stage 1
+
+- pattern matching 
+
+```jsx
+const res = await fetch(jsonService)
+case (res) {
+  when {status: 200, headers: {'Content-Length': s}} -> {
+    console.log('size is ' + s)
+  }
+  when {status: 404} -> {
+    console.log('JSON not found')
+  }
+}
+```
+
+--- 
+
+##  Hot takes fra Andreas🔥🔥🔥
+
+- Bruk språket, dropp Lodash and friends
+  - Subsidiært, importer kun det du trenger/bruk tree shaking
+- Se på open source-impl og skriv din egen impl
+- Ship egne bundles for eldre browsere hvis mulig
+- TypeScript er kult
+- Ikke bruk ting som er stage 3 eller under
+- Bruk alltid prettier for formatering
+
